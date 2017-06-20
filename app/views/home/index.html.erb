@@ -1,0 +1,10 @@
+
+<form action="/home/result" method="GET">
+  <input type="text" name="search">
+  <input type="submit">
+</form>
+
+
+<% @link.each_with_index do |l, i| %>
+<a href="http://www.cine21.com<%= l["href"] %>"><%= @title[i].inner_text %></a><br>
+<% end %>
