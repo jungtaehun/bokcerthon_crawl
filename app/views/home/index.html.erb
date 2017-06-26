@@ -4,7 +4,17 @@
   <input type="submit">
 </form>
 
-<h1>영화 목록들</h1>
+<h1>nokogiri</h1>
 <% @link.each_with_index do |l, i| %>
 <a href="http://www.cine21.com<%= l["href"] %>"><%= @title[i].inner_text %></a><br>
+<% end %>
+
+<h1>mechanize</h1>
+<% @data.each do |i| %>
+    <a href="<%= i[1] %>"><%= i[0] %></a><br>
+<% end %>
+
+<h1>wombat</h1>
+<% @wb['movies'].each do |i| %>
+    <a href="http://www.cine21.com<%= i['link'] %>"><%= i['title'] %></a><br>
 <% end %>
