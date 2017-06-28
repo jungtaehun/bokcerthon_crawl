@@ -1,20 +1,12 @@
-<h1>영화 검색</h1>
-<form action="/home/result" method="GET">
-  <input type="text" name="search">
-  <input type="submit">
-</form>
+<%= content_tag :h1, "영화 검색" %>
 
-<h1>nokogiri</h1>
+<%= form_tag("/home/result", method: "get") do %>
+    <%= label_tag(:search, "영화 검색:") %>
+    <%= text_field_tag(:search) %>
+    <%= submit_tag("검색") %>
+<% end %>
+
 <% @link.each_with_index do |l, i| %>
-<a href="http://www.cine21.com<%= l["href"] %>"><%= @title[i].inner_text %></a><br>
-<% end %>
-
-<h1>mechanize</h1>
-<% @data.each do |i| %>
-    <a href="<%= i[1] %>"><%= i[0] %></a><br>
-<% end %>
-
-<h1>wombat</h1>
-<% @wb['movies'].each do |i| %>
-    <a href="http://www.cine21.com<%= i['link'] %>"><%= i['title'] %></a><br>
+    <%= content_tag :a, @title[i].inner_text,  href: "http://www.cine21.com#{l["href"]}"  %>
+    <%= content_tag :br %>
 <% end %>

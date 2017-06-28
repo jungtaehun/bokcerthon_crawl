@@ -1,6 +1,4 @@
-<h1>Home#result</h1>
-<p>Find me in app/views/home/result.html.erb</p>
-
 <% @result.each do |i| %>
-    <a href="http://www.cine21.com<%= i["href"] %>"><%= i.inner_text %></a><br>
+    <%= content_tag :a, i.inner_text,  href: "http://www.cine21.com#{i["href"]}"  %>
+    <%= content_tag :br %>
 <% end %>
